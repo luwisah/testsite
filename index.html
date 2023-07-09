@@ -5,7 +5,7 @@
     <script src="https://unpkg.com/@google/model-viewer"></script>
 </head>
 <body>
-  <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" alt="A 3D model of an astronaut" ar shadow-intensity="1" camera-controls touch-action="pan-y" poster="https://modelviewer.dev/shared-assets/models/Astronaut.webp">
+  <model-viewer src="https://modelviewer.dev/shared-assets/models/Astronaut.glb" alt="A 3D model of an astronaut" ar shadow-intensity="1" camera-controls auto-rotate touch-action="pan-y" poster="https://modelviewer.dev/shared-assets/models/Astronaut.webp">
     
     <button slot="ar-button" id="ar-button">
       View in your space
@@ -20,7 +20,16 @@
     </button>
   </model-viewer>
 
-<style>
+  <script>
+    const modelViewer = document.querySelector('model-viewer');
+    const arButton = document.getElementById('ar-button');
+
+    arButton.addEventListener('click', () => {
+      modelViewer.removeAttribute('auto-rotate');
+    });
+  </script>
+
+  <style>
   /* This keeps child nodes hidden while the element loads */
   :not(:defined) > * {
     display: none;
